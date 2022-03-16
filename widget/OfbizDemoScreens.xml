@@ -17,7 +17,6 @@ KIND, either express or implied.  See the License for the
 specific language governing permissions and limitations
 under the License.
 -->
-
 <screens xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xmlns="http://ofbiz.apache.org/Widget-Screen" xsi:schemaLocation="http://ofbiz.apache.org/Widget-Screen http://ofbiz.apache.org/dtds/widget-screen.xsd">
     <screen name="main">
@@ -26,11 +25,11 @@ under the License.
                 <set field="headerItem" value="main"/><!-- this highlights the selected menu-item with name "main" -->
             </actions>
             <widgets>
-                <decorator-screen name="OfbizDemoCommonDecorator" location="${parameters.mainDecoratorLocation}">
+               <!-- <decorator-screen name="OfbizDemoCommonDecorator" location="${parameters.mainDecoratorLocation}">-->
                     <decorator-section name="body">
                         <label text="Hello World!! :)"/>
                     </decorator-section>
-                </decorator-screen>
+                <!--</decorator-screen>-->
                 <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
                     <decorator-section name="body">
                         <screenlet title="Add Ofbiz Demo">
@@ -41,6 +40,8 @@ under the License.
             </widgets>
         </section>
     </screen>
+
+
     <screen name="FindOfbizDemo">
         <section>
             <actions>
@@ -69,6 +70,33 @@ under the License.
                                 <label style="h3">${uiLabelMap.OfbizDemoViewPermissionError}</label>
                             </fail-widgets>
                         </section>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+
+
+    <screen name="AddOfbizDemoFtl">
+        <section>
+            <actions>
+                <set field="titleProperty" value="PageTitleAddOfbizDemos"/>
+                <set field="headerItem" value="addOfbizDemoFtl"/>
+                <script location="component://ofbizDemo/webapp/ofbizDemo/WEB-INF/actions/crud/ListOfbizDemo.groovy"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <screenlet title="${uiLabelMap.OfbizDemoListOfbizDemos}">
+                            <platform-specific>
+                                <html><html-template location="component://ofbizDemo/webapp/ofbizDemo/crud/ListOfbizDemo.ftl"/></html>
+                            </platform-specific>
+                        </screenlet>
+                        <screenlet title="${uiLabelMap.OfbizDemoAddOfbizDemoServiceByFtl}">
+                            <platform-specific>
+                                <html><html-template location="component://ofbizDemo/webapp/ofbizDemo/crud/AddOfbizDemo.ftl"/></html>
+                            </platform-specific>
+                        </screenlet>
                     </decorator-section>
                 </decorator-screen>
             </widgets>

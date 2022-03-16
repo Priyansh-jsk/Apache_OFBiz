@@ -52,4 +52,9 @@ under the License.
     <property key="OfbizDemoLastName">
         <value xml:lang="en">Last Name</value>
     </property>
+    ---------------------------------
+    <property key="userAdd">
+        <value xml:lang="en">User Add</value>
+    </property>
+    ---------------------------------
 </resource>
